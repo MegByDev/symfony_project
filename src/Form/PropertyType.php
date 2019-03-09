@@ -25,12 +25,14 @@ class PropertyType extends AbstractType
             ->add('floor')
             ->add('price')
             ->add('heat', ChoiceType::class, [
-                'choicies' => $this->getChoices()
+                'choices' => $this->getChoices()
             ])
             ->add('city')
             ->add('adress')
             ->add('sold')
-        
+            ->add('postal_code')
+            ->add('image')
+
         ;
     }
 
