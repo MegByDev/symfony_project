@@ -10,6 +10,7 @@ use Cocur\Slugify\Slugify;
  * @ORM\Entity(repositoryClass="App\Repository\PropertyRepository")
  * @ORM\Table(name="property")
  * @ORM\HasLifecycleCallbacks()
+ * @UniqueEntity("title")
  */
 class Property
 {
@@ -27,6 +28,7 @@ class Property
     private $id;
 
     /**
+     * @Assert\Length(min=5, max=255)
      * @ORM\Column(type="string", length=255)
      */
     private $title = "";
@@ -38,6 +40,7 @@ class Property
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Range(min=10, max=400)
      */
     private $surface = 0;
 
