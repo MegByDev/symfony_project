@@ -2,8 +2,6 @@
 
 namespace App\Controller;
 
-use Repository\Environment;
-use App\Entity\Property;
 use App\Repository\PropertyRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;

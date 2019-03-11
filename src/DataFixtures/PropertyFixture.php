@@ -24,11 +24,12 @@ class PropertyFixture extends Fixture
                 ->setSurface($faker->numberBetween(20, 350))
                 ->setRooms($faker->numberBetween(2, 10))
                 ->setBedRooms($faker->numberBetween(1, 9))
-                ->setFloors($faker->numberBetween(0, 15))
+                ->setFloor($faker->numberBetween(0, 15))
                 ->setPrice($faker->numberBetween(100000, 100000))
-                ->setCity($faker->numberBetween(0, cout(Property::HEAT)-1))
-                ->setAdress($faker->adress)
-                ->setPostalCode($faker->postalcode)
+                ->setCity($faker->numberBetween(0, count (Property::HEAT)-1))
+                ->setAdress($faker->sentences(3, true))
+                ->setPostalCode($faker->numberBetween(1, 5))
+                ->setImage($faker->image)
                 ->setSold(false);
             $manager->persist($property);
                 

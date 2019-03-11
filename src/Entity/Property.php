@@ -2,9 +2,12 @@
 
 namespace App\Entity;
 
-
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use Cocur\Slugify\Slugify;
+
+// DON'T forget this use statement!!!
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PropertyRepository")
@@ -25,7 +28,7 @@ class Property
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private $id = 0;
 
     /**
      * @Assert\Length(min=5, max=255)
@@ -36,7 +39,7 @@ class Property
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $description;
+    private $description = "";
 
     /**
      * @ORM\Column(type="integer")
@@ -57,7 +60,7 @@ class Property
     /**
      * @ORM\Column(type="integer")
      */
-    private $floor = 1;
+    private $floor = 0;
 
     /**
      * @ORM\Column(type="integer")
@@ -97,12 +100,12 @@ class Property
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $postal_code;
+    private $postal_code = "";
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $image;
+    private $image = "";
 
     public function __construct()
     {

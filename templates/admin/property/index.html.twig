@@ -32,9 +32,10 @@
                     <td> {{property.title}} </td>
                     <td>
                         <a href="{{ path('admin.property.edit', {id: property.id})}}" class="btn btn-info"> Modifier </a>
-                        <form method="post" action="{{ path('admin.property.delete', {id: property.id} )}}" style="display: inline-block" onsubmit=" return confirm('Ếtes vous vraiment sûr?')">
+                        <form methods="post" action="{{ path('admin.property.delete', {id: property.id} )}}" style="display: inline-block" onsubmit=" return confirm('Ếtes vous vraiment sûr?')">
                             <input type="hidden" name="_method" value="DELETE">
                             <input type="hidden" name="_token" value=" {{csrf_token('delete' ~ property.id)}} "> {# Security: token csrf  #}
+                            
                             
                             <button class="btn btn-danger">Supprimer</button>
                         </form>

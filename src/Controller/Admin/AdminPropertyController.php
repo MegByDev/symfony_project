@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFondation\RedirectResponse;
 use Symfony\Component\Routing\Annotation\Route;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
@@ -18,6 +19,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
 class AdminPropertyController extends AbstractController {
+
 
 
     private $repository;
@@ -85,6 +87,9 @@ class AdminPropertyController extends AbstractController {
 
         }
 
+
+
+
         return $this->render('admin/property/edit.html.twig', [
             'property' => $property,
             'form' => $form->createView()
@@ -102,12 +107,11 @@ class AdminPropertyController extends AbstractController {
     public function delete(Property $property, Request $request){
         if ($this->isCsrtTokenValid('delete', $property->getId(), $request->get('_token'))){
             $this->em->remove($property);
-            $this->flush();
+            $this->em->flush();
             $this->addFlash('success', 'Bien supprimé avec succès');
-            return new Response('Supression');
         }
       
-        return $this->redirectToRoute('admin.property.index');
+        return $this->redirectToRoute('admin.property.index ');
         
     }
     

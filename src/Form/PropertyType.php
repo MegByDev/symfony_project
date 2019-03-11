@@ -7,7 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use App\Form\PropertyType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 
 
@@ -33,6 +33,13 @@ class PropertyType extends AbstractType
             ->add('postal_code')
             ->add('image')
 
+        
+            
+            ->add('image', FileType::class, array(
+                'label' => 'Choose a PDF file',
+                'data_class' => null
+            ))
+
         ;
     }
 
@@ -56,5 +63,9 @@ class PropertyType extends AbstractType
         return $output;
     }
 
+
+
+    
+  
 
 }
