@@ -84,21 +84,6 @@ class LoginFormAuthentificatorAuthenticator extends AbstractFormLoginAuthenticat
     public function checkCredentials($credentials, UserInterface $user)
     {
         
-        
-        $token = md5(uniqld());
-
-        $user-setToken($token);
-        $this->entityManager->persist($user);
-        $this->entityManager->flush();
-        
-        $message = (new \Swift_Message())
-            ->setFrom('no-reply@overseas.com')
-            ->setTo($credentials['email'])
-            ->setBody(
-                $token
-            );
-        $this->swift_Mailer->send($message);
-        
         return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
     }
 

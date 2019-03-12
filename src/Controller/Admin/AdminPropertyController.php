@@ -31,8 +31,9 @@ class AdminPropertyController extends AbstractController {
         $this->em = $em;
     }
 
+
     /**
-     * @Route("/admin", name="admin.property.index")
+     * @Route("/admin", name="admin")
      * @return \Symfony\Component\HttpFondation\Response
      */
 
@@ -68,7 +69,7 @@ class AdminPropertyController extends AbstractController {
     }
 
     /**
-     * @Route("/admin/property/{id}", name="admin.property.edit")
+     * @Route("/admin/property/{id}", name="admin.property.edit", methods="GET|POST")
      * @param Property $property
      * @param Request $request
      * @return \Symfony\Component\HttpFondation\Response
@@ -86,9 +87,6 @@ class AdminPropertyController extends AbstractController {
             return $this->redirectToRoute('admin.property.index');
 
         }
-
-
-
 
         return $this->render('admin/property/edit.html.twig', [
             'property' => $property,
@@ -109,9 +107,10 @@ class AdminPropertyController extends AbstractController {
             $this->em->remove($property);
             $this->em->flush();
             $this->addFlash('success', 'Bien supprimé avec succès');
+
         }
-      
         return $this->redirectToRoute('admin.property.index ');
+
         
     }
     
