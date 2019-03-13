@@ -12,7 +12,7 @@
 
     </div>
 
-    <div class="jumbotron text-center">
+    <div class="jumbotron text-center " style="padding-left: 0px; padding-right: 0px; padding-bottom: 0px;">
 
     <div class="container">
 
@@ -20,9 +20,23 @@
             <div class="card-deck">
             {% for property in properties %}
                   <div class="card">
+
+                   <div class="card-image waves-effect waves-block waves-light">
+                      <img class="card-img-top" src="{{ property.image }}" alt="Card image cap">
+                   </div>
+                    <div class="card-body">
+                        <a href="{{path ('property_show', {'id': property.id, 'slug': property.slug}) }}"> {{ property.title }} </a>
+                
+                        <p class="card-text">{{ property.city }}</p>
+                    </div>
+                    <div class="card-footer">
+                      <div class="text-primary" style="font-weight: bold;font-size: 2rem;">{{ property.formatedPrice }}€</div>
+                    </div>
+                  </div>
+                  <div class="card">
                     <img class="card-img-top" src="{{ property.image }}" alt="Card image cap">
                     <div class="card-body">
-                        <a href="{{path ('property.show', {'id': property.id, 'slug': property.slug}) }}"> {{ property.title }} </a>
+                        <a href="{{path ('property_show', {'id': property.id, 'slug': property.slug}) }}"> {{ property.title }} </a>
                 
                         <p class="card-text">{{ property.city }}</p>
                     </div>
@@ -32,8 +46,12 @@
                   </div>
             
           {% endfor %}
+          
       </div>
     </div>
+
+
+
 
 
 {% endblock %}

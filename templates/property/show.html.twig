@@ -1,76 +1,79 @@
-{% extends "base.html.twig" %}
+{% extends 'base.html.twig' %}
 
-{% block title property.title %}
+{% block title %}Property{% endblock %}
 
 {% block body %}
-    <div class="jumbotron">
+    <div class="container">
+    
+    
+    <h1 class="text-center">Property</h1>
 
-        <div class="container">
+    <table class="table">
+        <tbody>
 
-            <div class="row">
-                <div class="col-md-8"> 
-                    <img class="card-img-top" src="{{ property.image }}" alt="Card image cap">
-                </div>
-
-                <div class="col-md-4">
-                    <h1>{{ property.title }}</h1>
-                    <h2>{{ property.rooms }} pièces - {{ property.surface }} m²</h2>
-                    <div class="text-primary" style="font-size: 4rem; font-weight: bold;"> {{ property.formatedPrice }}€</div>
-                    <a href="#" class="btn btn-primary"> Contacter l'agence</a>
-                        
-                </div>
-
-            </div>
-
-        </div>
+            <tr>
+                <th>Title</th>
+                <td>{{ property.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ property.description }}</td>
+            </tr>
+            <tr>
+                <th>Surface</th>
+                <td>{{ property.surface }}</td>
+            </tr>
+            <tr>
+                <th>Rooms</th>
+                <td>{{ property.rooms }}</td>
+            </tr>
+            <tr>
+                <th>Bedrooms</th>
+                <td>{{ property.bedrooms }}</td>
+            </tr>
+            <tr>
+                <th>Floor</th>
+                <td>{{ property.floor }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ property.price }}</td>
+            </tr>
+            <tr>
+                <th>Heat</th>
+                <td>{{ property.heat }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ property.city }}</td>
+            </tr>
+            <tr>
+                <th>Adress</th>
+                <td>{{ property.adress }}</td>
+            </tr>
+            <tr>
+                <th>Sold</th>
+                <td>{{ property.sold ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ property.createdAt ? property.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Postal_code</th>
+                <td>{{ property.postalCode }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ property.image }}</td>
+            </tr>
+        </tbody>
+    </table>
     </div>
 
-    <div class="container md-6">
-       
-        <div class="row">
-            
-            <div class="cold-md-6">
-                
-                <h2>Caractéristiques</h2>
-                
-                <table class="table table-striped">
-                    <tr>
-                        <td>Surface habitable</td>
-                        <td> {{ property.surface}} m² </td>
-                    </tr>
-                    <tr>
-                        <td>Pièces</td>
-                        <td> {{property.rooms}} </td>
-                    </tr>
-                    <tr>
-                        <td>Chambre</td>
-                        <td> {{property.bedrooms}} </td>
-                    </tr>
-                    <tr>
-                        <td>Etage</td>
-                        <td> {{property.floor}} </td>
-                    </tr>
-                    <tr>
-                        <td>Chauffage</td>
-                        <td> {{property.heatType}} </td>
-                    </tr>
+    <a href="{{ path('property_index') }}">back to list</a>
 
-                </table>
+    <a href="{{ path('property_edit', {'id': property.id}) }}">edit</a>
 
-            </div>
-
-            <div class="col-md-2">
-            </div>
-
-                
-            <div class="col-md-2">
-            <h2>Spécificité</h2>
-
-            <p>
-                {{ property.description | nl2br}}
-            </p>
-            </div>
-        </div>     
-    </div>  
-
+    {{ include('property/_delete_form.html.twig') }}
 {% endblock %}

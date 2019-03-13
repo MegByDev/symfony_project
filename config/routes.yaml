@@ -4,6 +4,8 @@ home:
 
 logout:
     path: /logout
+    controller: App\Controller\SecurityController::logout
+
 
 #index:
 #    path: /

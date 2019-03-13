@@ -29,9 +29,7 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item ">
-        <a class="nav-link" {% if current_menu is defined and current_menu == 'properties' %}active{% endif %} href={{path ('biens') }}>Acheter</a>
-      </li>
+    
       {% if not app.user %}
 
        <ul class="navbar-nav">
@@ -55,6 +53,7 @@
   </div>
 </nav>
 
+
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -66,4 +65,23 @@
     
     
     </body>
+
+
+    <style>
+
+
+footer {
+  
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    background-color: #45a1ff;
+    color: #fff;
+}
+</style>
+
+
+    <footer>
+        <p>© 2019 Grego-Mégane </p>
+    </footer>
 </html>

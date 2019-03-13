@@ -1,14 +1,62 @@
 {% extends 'base.html.twig' %}
 
-{% block title 'Tous nos biens'%}
+{% block title %}Property index{% endblock %}
 
 {% block body %}
+   
+<div class="container mt-4">
+ <h1 class="text-center">Gestion des Biens</h1>
+    <table class="table table-string">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Surface</th>
+                <th>Rooms</th>
+                <th>Bedrooms</th>
+                <th>Floor</th>
+                <th>Price</th>
+                <th>Heat</th>
+                <th>City</th>
+                <th>Adress</th>
+                <th>Sold</th>
+                <th>Postal_code</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        </div>
+        {% for property in properties %}
+            <tr>
+                <td>{{ property.title }}</td>
+                <td>{{ property.description }}</td>
+                <td>{{ property.surface }}</td>
+                <td>{{ property.rooms }}</td>
+                <td>{{ property.bedrooms }}</td>
+                <td>{{ property.floor }}</td>
+                <td>{{ property.price }}</td>
+                <td>{{ property.heat }}</td>
+                <td>{{ property.city }}</td>
+                <td>{{ property.adress }}</td>
+                <td>{{ property.sold ? 'Yes' : 'No' }}</td>
+                <td>{{ property.postalCode }}</td>
+                <td>
+                    <a href="{{ path('property_show', {'id': property.id}) }}">Afficher</a>
+                    <a href="{{ path('property_edit', {'id': property.id}) }}">Modifier</a>
+                    <a href="{{ path('property_delete', {'id': property.id}) }}">supprimer</a>
 
-<div class="container">
-    <h1 class="text-center">Nos biens</h1>
-
-            
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">Aucun enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+    <div class="text-right">
+        <a href="{{ path('property_new') }}" class="btn btn-primary">Créer un nouveau bien</a>
     </div>
-
-
+</div>
 {% endblock %}

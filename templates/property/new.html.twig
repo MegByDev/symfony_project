@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau produit{% endblock %}
+
+{% block body %}
+   
+    <div class="container">
+    <h1 class="text-center">Créer un nouveau produit</h1>
+
+    {{ include('property/_form.html.twig') }}
+
+    <a href="{{ path('property_index') }}">Retour</a>
+    </div>
+
+{% endblock %}
